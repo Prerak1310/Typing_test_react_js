@@ -1,0 +1,108 @@
+/* all the css for the signup page */
+
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 50px;
+    background-color: rgb(245, 245, 245);
+    padding-bottom: 30px;
+    border-radius: 20px;
+    width: 450px;
+    height: 500px;
+}
+
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    width:100%;
+    margin-top: 30px;
+}
+
+.text{
+    color: rgb(54, 16, 125);
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.underline{
+    width: 60px;
+    height: 6px;
+    background:rgb(41, 7, 108);
+    border-radius: 10px;
+}
+
+.inputs{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 400px;
+    height: 70px;
+    background: rgb(224, 224, 224);
+    border-radius: 6px;
+}
+
+.img{
+    margin: 0px 30px;
+    font-size: 32px;
+}
+.input input{
+    font-family: 'ubuntu';
+    height: 50px;
+    width: 400px;
+    background:transparent;
+    border: none;
+    outline:none;
+    color: rgb(34, 34, 34);
+    font-size: 20px;
+}
+
+.forgot-password{
+    padding-left: 25%;
+    margin-top: 28px;
+    color:rgb(79, 79, 79);
+    font-size: 18px;
+}
+
+.forgot-password span{
+    color:purple;
+    cursor: pointer;
+}
+
+.submit-container{
+    display: flex;
+    gap: 30px;
+    margin: 60px auto;
+}
+
+.submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;
+    height: 60px;
+    color: aliceblue;
+    background: rgb(98, 14, 141);
+    border-radius: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    cursor:pointer;
+}
+.submit:hover{
+    background-color:rgb(34, 11, 69) ;
+}
+.gray{
+    background-color: rgba(144, 144, 144, 0.839);
+}
+.gray:hover{
+    background-color: rgba(100, 100, 100, 0.839);
+}
