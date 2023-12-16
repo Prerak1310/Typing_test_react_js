@@ -1,10 +1,13 @@
+* {
+  font-family: monospace;
+}
 /* ........SIGNUP FORM CSS........ */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #f4f4f4;
+  background-color: RGB(98, 14, 141);
 }
 
 .container {
@@ -68,11 +71,15 @@ button:hover {
   text-align: center;
 }
 .navbar {
-  background-color: #333;
+  background-color: #2e153a;
+  box-shadow: 1px 1px gray;
+  border-bottom-style: groove;
+  border-color: gray;
   color: white;
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-content: right;
 }
 
 .navbar ul {
@@ -84,18 +91,27 @@ button:hover {
 
 .navbar ul li {
   margin-right: 20px;
+  display: flex;
 }
 
 .navbar ul li a {
   text-decoration: none;
-  color: white;
+  color: rgb(232, 221, 19);
+  background-color: black;
+
   font-weight: bold;
+  padding: 12px;
+  border-radius: 15px;
+  font-size: 30px;
+  cursor: pointer;
+  letter-spacing: 30px;
 }
 
 .navbar button {
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
+  background-color: black;
 }
 
 .navbar button:hover {
@@ -125,7 +141,7 @@ button:hover {
 }
 
 .App-link {
-  color: #61dafb;
+  color: #323b3d;
 }
 
 @keyframes App-logo-spin {
