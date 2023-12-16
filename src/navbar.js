@@ -1,22 +1,34 @@
 import "./App.css";
 import { useNavigate } from "react-router-dom";
-import mainlogo from "./assets/logo.png";
+// import Signup from './pages/signup';
 export default function Navbar() {
   const navigate = useNavigate();
   return (
     <>
       <div class="navbar">
         <ul>
-          <li className="navbar-brand">
-            <a href="/">
-              <img src={mainlogo} width="40" height="40" alt="" />
-              {"\u00A0"}
-              TYPERIGHT
-            </a>
+          <li>
+            <button className="navbutton" onClick={() => navigate("/")}>
+              Home
+            </button>
+          </li>
+          {/* change where the navigation buttons will take u here 👇 */}
+          <li>
+            <button className="navbutton" onClick={() => navigate("/")}>
+              About
+            </button>
+          </li>
+          <li>
+            <button className="navbutton" onClick={() => navigate("/")}>
+              Contact
+            </button>
           </li>
         </ul>
         <div>
-          <button onClick={() => navigate("/signup")}>Login</button>&nbsp;
+          <button className="Login" onClick={() => navigate("/signup")}>
+            Login
+          </button>
+          &nbsp;
         </div>
       </div>
     </>
