@@ -1,41 +1,31 @@
 import "./login.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
 //function starts here
-export default function Login() {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
-  const [error, setError] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate;
   const onSubmit = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        setError(user);
-        console.log(error);
+        navigate("");
+        console.log(user);
         // ...
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
+        console.log(email);
+        console.log(password);
       });
   };
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
-      const uid = user.uid;
-      setError(uid);
-      // ...
-    } else {
-      // User is signed out
-      // ...
-    }
-  });
   return (
     <div className="signupform">
       <form>
@@ -63,11 +53,12 @@ export default function Login() {
         <br />
 
         <br />
-        <p>{error}</p>
+
         <button type="submit" onClick={onSubmit}>
           LOGIN
         </button>
       </form>
     </div>
   );
-}
+};
+export default Login;
