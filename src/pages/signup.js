@@ -140,7 +140,7 @@ export default function Signup() {
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
-        // console.log(user)
+        console.log(user)
         // ...
       })
       .catch((err) => {
