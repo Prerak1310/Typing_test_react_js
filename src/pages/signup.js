@@ -123,25 +123,51 @@
 // }
 
 import "./signup.css";
-
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import {useState} from 'react';
+import {auth} from '../firebase'
 //function starts here
 export default function Signup() {
+  const [email, setEmail] = useState("");
+  const [username,setUsername]=useState("");
+  const [error, setError] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const onSubmit=(e)=>
+  {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        // console.log(user)
+        // ...
+      })
+      .catch((err) => {
+        setError(err);
+        console.log(error)
+
+        // ..
+      });
+  }
   return (
     <div className="signupform">
       <form>
-        <input placeholder="Enter Email" />
+        <input id="email" onChange={(e)=>setEmail(e.target.value)} value={email} placeholder="Enter Email" />
         <br />
 
-        <input placeholder="Enter Username" />
+        <input placeholder="Enter Username" onChange={(e)=>setUsername(e.target.value)} value={username}/>
         <br />
 
-        <input placeholder="Enter Password" />
+        <input placeholder="Enter Password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
         <br />
 
-        <input placeholder="Confirm Password" />
-        <br />
-        <button type="submit">SIGNUP</button>
+        {/* <input placeholder="Confirm Password"/>
+        <br /> */}
+        <button type="submit" onClick={onSubmit}>SIGNUP</button>
       </form>
     </div>
   );
+  
 }
+
