@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth,GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyDc-emw4dEmVpOMljfRK2xyb5ZV0485zak",
   authDomain: "typing-test-react-js.firebaseapp.com",
@@ -11,5 +11,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+export const provider=new GoogleAuthProvider();
 export const auth=getAuth(app);
 export default app;

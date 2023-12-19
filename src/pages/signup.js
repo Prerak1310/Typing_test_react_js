@@ -125,18 +125,25 @@
 import "./signup.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import {useState} from 'react';
-import {auth} from '../firebase'
+import {auth,provider} from '../firebase'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
 //function starts here
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [username,setUsername]=useState("");
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
-  
+  const [confpassword, setConfPassword] = useState("");
+  const wrongpassword="Passowrd match nhi  karta re!"
+
   const onSubmit=(e)=>
   {
+    
     e.preventDefault();
+    if(password===confpassword){
     createUserWithEmailAndPassword(auth, email, password)
+    
       .then((userCredential) => {
         // Signed up 
         const user = userCredential.user;
@@ -148,12 +155,43 @@ export default function Signup() {
         console.log(error)
 
         // ..
-      });
+      })}
+    else{
+      
+      setError(wrongpassword)
+    }
+
+    
+    } 
+  const googlelogin=(e)=>
+  {
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      // The signed-in user info.
+      const user = result.user;
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });     
   }
+    
+      
+  
   return (
     <div className="signupform">
       <form>
-        <input id="email" onChange={(e)=>setEmail(e.target.value)} value={email} placeholder="Enter Email" />
+        <input type="email" id="email" onChange={(e)=>setEmail(e.target.value)} value={email} placeholder="Enter Email" />
         <br />
 
         <input placeholder="Enter Username" onChange={(e)=>setUsername(e.target.value)} value={username}/>
@@ -162,12 +200,13 @@ export default function Signup() {
         <input placeholder="Enter Password" onChange={(e)=>setPassword(e.target.value)} value={password}/>
         <br />
 
-        {/* <input placeholder="Confirm Password"/>
-        <br /> */}
+         <input placeholder="Confirm Password" onChange={(e)=>setConfPassword(e.target.value)} value={confpassword}/>
+        <br /> 
+        {error===wrongpassword?<div>{error}</div>:<div></div>}
         <button type="submit" onClick={onSubmit}>SIGNUP</button>
+        <button type="submit" onClick={googlelogin}>SIGNUP</button>
       </form>
     </div>
   );
   
-}
-
+  }
