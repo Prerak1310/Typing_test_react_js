@@ -1,21 +1,22 @@
-import "./login.css";
 import React, { useState } from "react";
+import "./login.css";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 //function starts here
 const Login = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate;
-  const onSubmit = (e) => {
+
+  const onLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        navigate("");
+        navigate("/");
         console.log(user);
         // ...
       })
@@ -54,7 +55,7 @@ const Login = () => {
 
         <br />
 
-        <button type="submit" onClick={onSubmit}>
+        <button type="submit" onClick={onLogin}>
           LOGIN
         </button>
       </form>
