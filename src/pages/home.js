@@ -4,9 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 
 export default function Home() {
-  const [loginStatus, setloginStatus] = useState(false);
+  const [loginStatus, setloginStatus] = useState("Login");
   const user = auth.currentUser;
   console.log(user);
+  const logIn=(e)=>
+  {
+    navigate("/login");
+  }
   const logOut = (e) => {
     signOut(auth);
   };
@@ -16,14 +20,15 @@ export default function Home() {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const uid = user.uid;
-        setloginStatus(true);
+        setloginStatus("logout");
+        console.log("user is logged in")
         // ...
         console.log("uid", uid);
       } else {
         // User is signed out
         // ...
         console.log("user is logged out");
-        setloginStatus(false);
+        setloginStatus("login");
       }
     });
   }, []);
@@ -32,11 +37,9 @@ export default function Home() {
     <div>
       <button>alkdjfaskljdf</button>
       <div className="navbar">
-        {loginStatus === true ? (
-          <button onClick={logOut}>Logout</button>
-        ) : (
-          <button onClick={() => navigate("/login")}>Login</button>
-        )}
+      
+          <button onClick={loginStatus==="logout"?()=>logOut():()=>logIn()} >{loginStatus}</button>
+              
       </div>
     </div>
   );

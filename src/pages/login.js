@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import { auth } from "../firebase";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 //function starts here
 const Login = () => {
@@ -58,6 +58,7 @@ const Login = () => {
         <button type="submit" onClick={onLogin}>
           LOGIN
         </button>
+        <NavLink to="/signup">Signup</NavLink>
       </form>
     </div>
   );
