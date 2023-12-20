@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./login.css";
+import "../App.css";
+import "../index.css";
 import { auth, provider } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -40,53 +41,67 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
-      <div className="loginform">
+    <>
+      <div className="login-container">
+        <h2>Login</h2>
         <form>
-          <input
-            type="email"
-            id="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            placeholder="Enter Email"
-          />
-          <br />
-          <input
-            placeholder="Enter Username"
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
-          />
-          <br />
-          <input
-            placeholder="Enter Password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
-          <br />
+          <div className="form-group">
+            <input
+              type="email"
+              id="email"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              placeholder="Enter Email"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              placeholder="Enter Username"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              placeholder="Enter Password"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
+            />
+          </div>
           <button type="submit" onClick={onLogin}>
             Login
           </button>{" "}
           <GoogleButton onClick={handleClick} />
         </form>
       </div>
-    </div>
+    </>
+
+    // <div className="container">
+    //   <div className="loginform">
+    //     <form>
+    //       <input
+    //         type="email"
+    //         id="email"
+    //         onChange={(e) => setEmail(e.target.value)}
+    //         value={email}
+    //         placeholder="Enter Email"
+    //       />
+    //       <br />
+    //       <input
+    //         placeholder="Enter Username"
+    //         onChange={(e) => setUsername(e.target.value)}
+    //         value={username}
+    //       />
+    //       <br />
+    //       <input
+    //         placeholder="Enter Password"
+    //         onChange={(e) => setPassword(e.target.value)}
+    //         value={password}
+    //       />
+    //       <br />
+
+    //     </form>
+    //   </div>
+    // </div>
   );
 }
-
-// import React, { useEffect, useState } from "react";
-// import { auth, provider } from "../firebase";
-// import { signInWithPopup } from "firebase/auth";
-
-// function SignIn() {
-//   const [value, setValue] = useState("");
-//   const handleClick = () => {
-//     signInWithPopup(auth, provider);
-//   };
-
-//   return (
-//     <div>
-//       <button onClick={handleClick}>Signin With Google</button>
-//     </div>
-//   );
-// }
-// export default SignIn;
