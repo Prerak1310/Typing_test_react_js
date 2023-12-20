@@ -126,6 +126,7 @@ import "./signup.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 //function starts here
 export default function Signup() {
@@ -135,7 +136,7 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [confpassword, setConfPassword] = useState("");
   const wrongpassword = "Passwords do not match";
-
+const navigate=useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
     if (password === confpassword) {
@@ -144,6 +145,7 @@ export default function Signup() {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+          navigate("/login")
           // ...
         })
         .catch((err) => {

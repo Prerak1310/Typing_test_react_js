@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import "./login.css";
-import { auth } from "../firebase";
+import { auth ,provider} from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword ,signInWithRedirect} from "firebase/auth";
 //function starts here
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  // const [value,setValue] = useState('')
+  const handleClick =()=>{
+      signInWithRedirect(auth,provider);
+  }
 
+  
   const onLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
@@ -26,9 +31,10 @@ const Login = () => {
         console.log(password);
       });
   };
-
+  
   return (
-    <div className="signupform">
+    <div className="container">
+    <div className="loginform">
       <form>
         <input
           type="email"
@@ -58,9 +64,13 @@ const Login = () => {
         <button type="submit" onClick={onLogin}>
           LOGIN
         </button>
+        <button onClick={handleClick}>
+          sign in with google
+        </button>
         <NavLink to="/signup">Signup</NavLink>
       </form>
-    </div>
+      
+    </div></div>
   );
 };
 export default Login;
