@@ -2,7 +2,6 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-import "../index.css";
 
 export default function Home() {
   const [loginStatus, setloginStatus] = useState("Login");

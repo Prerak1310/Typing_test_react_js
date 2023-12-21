@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import "../App.css";
-import "../index.css";
+import "./login.css";
 import { auth, provider } from "../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -41,40 +40,45 @@ export default function Login() {
   };
 
   return (
-    <>
-      <div className="login-container">
+    <div className="appbg">
+      <form className="login-container">
         <h2>Login</h2>
-        <form>
-          <div className="form-group">
-            <input
-              type="email"
-              id="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              placeholder="Enter Email"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              placeholder="Enter Username"
-              onChange={(e) => setUsername(e.target.value)}
-              value={username}
-            />
-          </div>
-          <div className="form-group">
-            <input
-              placeholder="Enter Password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-          </div>
-          <button type="submit" onClick={onLogin}>
-            Login
-          </button>{" "}
+        <div className="form-group">
+          <input
+            type="email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            placeholder="Enter Email"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            placeholder="Enter Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+        </div>
+        <div className="form-group">
+          <div className="login-container-bg"></div>
+          <input
+            placeholder="Enter Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </div>
+        <button type="submit" onClick={onLogin}>
+          Login
+        </button>{" "}
+        <div className="google-button">
           <GoogleButton onClick={handleClick} />
-        </form>
-      </div>
-    </>
+        </div>
+        <div className="form-group">
+          Dont have an account?
+          <a href="/signup">Signup</a>
+        </div>
+      </form>
+    </div>
 
     // <div className="container">
     //   <div className="loginform">
