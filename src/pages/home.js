@@ -2,7 +2,7 @@ import { signOut, onAuthStateChanged } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
-
+import "./home.css";
 export default function Home() {
   const [loginStatus, setloginStatus] = useState("Login");
   const user = auth.currentUser;
@@ -31,14 +31,12 @@ export default function Home() {
   }, []);
   const navigate = useNavigate();
   return (
-    <div>
-      <div className="navbar">
-        <button
-          onClick={loginStatus === "logout" ? () => logOut() : () => logIn()}
-        >
-          {loginStatus}
-        </button>
-      </div>
+    <div className="container">
+      <button
+        onClick={loginStatus === "logout" ? () => logOut() : () => logIn()}
+      >
+        {loginStatus}
+      </button>
     </div>
   );
 }

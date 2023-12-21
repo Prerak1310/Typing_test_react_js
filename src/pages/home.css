@@ -1,1 +1,14 @@
-
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  padding: 30px;
+}
+.homepagebutton {
+  background-color: blue;
+}
+.appbg {
+  display: flex;
+  font-family: Arial, sans-serif;
+}

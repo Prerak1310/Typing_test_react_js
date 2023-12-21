@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import { auth, provider } from "../firebase";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
 import { GoogleButton } from "react-google-button";
@@ -16,6 +16,7 @@ export default function Login() {
     signInWithPopup(auth, provider)
       .then((data) => {
         console.log(data);
+        navigate("/");
       })
       .catch((error) => {
         console.log("error");
@@ -67,7 +68,7 @@ export default function Login() {
             value={password}
           />
         </div>
-        <button type="submit" onClick={onLogin}>
+        <button type="submit" onClick={onLogin} className="login-button">
           Login
         </button>{" "}
         <div className="google-button">
@@ -79,33 +80,5 @@ export default function Login() {
         </div>
       </form>
     </div>
-
-    // <div className="container">
-    //   <div className="loginform">
-    //     <form>
-    //       <input
-    //         type="email"
-    //         id="email"
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         value={email}
-    //         placeholder="Enter Email"
-    //       />
-    //       <br />
-    //       <input
-    //         placeholder="Enter Username"
-    //         onChange={(e) => setUsername(e.target.value)}
-    //         value={username}
-    //       />
-    //       <br />
-    //       <input
-    //         placeholder="Enter Password"
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         value={password}
-    //       />
-    //       <br />
-
-    //     </form>
-    //   </div>
-    // </div>
   );
 }
