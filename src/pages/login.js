@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./login.css";
-import { auth, provider } from "../firebase";
+import { auth, provider, fbprovider } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
@@ -14,6 +14,18 @@ export default function Login() {
   const handleClick = (e) => {
     e.preventDefault();
     signInWithPopup(auth, provider)
+      .then((data) => {
+        console.log(data);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log("error");
+      });
+  };
+
+  const handleClickFb = (e) => {
+    e.preventDefault();
+    signInWithPopup(auth, fbprovider)
       .then((data) => {
         console.log(data);
         navigate("/");
@@ -73,6 +85,9 @@ export default function Login() {
         </button>{" "}
         <div className="google-button">
           <GoogleButton onClick={handleClick} />
+        </div>
+        <div className="google-button">
+          <GoogleButton onClick={handleClickFb} />
         </div>
         <div className="form-group">
           Dont have an account?
