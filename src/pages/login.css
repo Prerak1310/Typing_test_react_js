@@ -49,6 +49,30 @@
 .login-button:hover {
   background-color: rgba(255, 255, 255, 0.35);
 }
-.google-button {
-  margin-bottom: 7px;
+.fa {
+  padding: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-style: none;
+
+  border-radius: 8px;
+  margin: 3px;
+  text-align: center;
+}
+.fa-facebook {
+  background: rgba(59, 89, 152, 1);
+  color: white;
+  font-size: large;
+  width: 45%;
+}
+.fa-google {
+  background: rgba(222, 15, 15);
+  color: rgb(255, 255, 255);
+  width: 45%;
+}
+.fa-facebook:hover {
+  background-color: rgb(93, 124, 191);
+}
+.fa-google:hover {
+  background-color: rgb(235, 142, 130);
 }

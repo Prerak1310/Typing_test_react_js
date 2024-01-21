@@ -4,7 +4,6 @@ import { auth, provider, fbprovider } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup } from "firebase/auth";
-import { GoogleButton } from "react-google-button";
 //function starts here
 export default function Login() {
   const navigate = useNavigate();
@@ -82,13 +81,13 @@ export default function Login() {
         </div>
         <button type="submit" onClick={onLogin} className="login-button">
           Login
-        </button>{" "}
-        <div className="google-button">
-          <GoogleButton onClick={handleClick} />
+        </button>
+
+        <div className="form-group">
+          <button className="fa fa-google" onClick={handleClick}></button>
+          <button className="fa fa-facebook" onClick={handleClickFb}></button>
         </div>
-        <div className="google-button">
-          <GoogleButton onClick={handleClickFb} />
-        </div>
+
         <div className="form-group">
           Dont have an account?
           <a href="/signup">Signup</a>
