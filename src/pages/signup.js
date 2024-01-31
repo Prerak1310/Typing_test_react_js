@@ -11,7 +11,7 @@ export default function Signup() {
   const [error, setError] = useState("");
   const [password, setPassword] = useState("");
   const [confpassword, setConfPassword] = useState("");
-  const wrongpassword = "Passwords do not match";
+  const wrongpassword = "Passwords do not match!!!";
   const navigate = useNavigate();
   const onSubmit = (e) => {
     e.preventDefault();
@@ -35,41 +35,50 @@ export default function Signup() {
   };
 
   return (
-    <div className="signupform">
-      <form>
-        <input
-          type="email"
-          id="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          placeholder="Enter Email"
-        />
-        <br />
-
-        <input
-          placeholder="Enter Username"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-        />
-        <br />
-
-        <input
-          placeholder="Enter Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <br />
-
-        <input
-          placeholder="Confirm Password"
-          onChange={(e) => setConfPassword(e.target.value)}
-          value={confpassword}
-        />
-        <br />
-        {error === wrongpassword ? <div>{error}</div> : <div></div>}
-        <button type="submit" onClick={onSubmit}>
-          SIGNUP
-        </button>
+    <div className="appbg_signup">
+      <form className="signup-container">
+        <div className="form_group_signup">
+          <input
+            type="email"
+            id="email"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            placeholder="Enter Email"
+          />
+        </div>
+        <div className="form_group_signup">
+          <input
+            placeholder="Enter Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+        </div>
+        <div className="form_group_signup">
+          <input
+            placeholder="Enter Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+        </div>
+        <div className="form_group_signup">
+          <input
+            placeholder="Confirm Password"
+            onChange={(e) => setConfPassword(e.target.value)}
+            value={confpassword}
+          />
+        </div>
+        <div className="form_group_signup">
+          <button type="submit" onClick={onSubmit} className="signup_button">
+            SIGNUP
+          </button>
+          {error === wrongpassword ? (
+            <div className="passmatch">
+              <p>{error}</p>
+            </div>
+          ) : (
+            <div></div>
+          )}
+        </div>
       </form>
     </div>
   );

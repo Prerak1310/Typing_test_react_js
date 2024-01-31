@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.appbg_signup {
+  font-family: Arial, sans-serif;
+  background: url("./assets/mountainwhite.jpg") center/cover no-repeat fixed;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.signup-container {
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0.35);
+  text-align: center;
+  color: white; /* Text color on the blurred background */
+}
+.form_group_signup {
+  margin-bottom: 20px;
+}
+
+.form_group_signup input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.signup_button {
+  padding: 10px;
+  margin-bottom: 12px;
+  font-size: 16px;
+  background-color: rgba(222, 15, 15);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.signup_button:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+.passmatch {
+  text-align: left;
+  color: red;
+  font-size: small;
+}
+
+.fa {
+  padding: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-style: none;
+
+  border-radius: 8px;
+  margin: 3px;
+  text-align: center;
+}
+.fa-facebook {
+  background: rgba(59, 89, 152, 1);
+  color: white;
+  font-size: large;
+  width: 45%;
+}
+.fa-google {
+  background: rgba(222, 15, 15);
+  color: rgb(255, 255, 255);
+  width: 45%;
+}
+.fa-facebook:hover {
+  background-color: rgb(93, 124, 191);
+}
+.fa-google:hover {
+  background-color: rgb(235, 142, 130);
+}
