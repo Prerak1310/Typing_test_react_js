@@ -10,6 +10,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  //FUNCTION FOR SIGN IN WITH GOOGLE BUTTON
   const handleClick = (e) => {
     e.preventDefault();
     signInWithPopup(auth, provider)
@@ -21,7 +22,8 @@ export default function Login() {
         console.log("error");
       });
   };
-
+  //...
+  //FUNCTION FOR SIGNIN WITH FACEBOOK BUTTON
   const handleClickFb = (e) => {
     e.preventDefault();
     signInWithPopup(auth, fbprovider)
@@ -33,16 +35,15 @@ export default function Login() {
         console.log("error");
       });
   };
-
+  //...
+  //FUNCTION FOR MAIN LOGIN BUTTON
   const onLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         navigate("/");
         console.log(user);
-        // ...
       })
       .catch((error) => {
         console.log(error);
@@ -50,11 +51,12 @@ export default function Login() {
         console.log(password);
       });
   };
-
+  //...
   return (
     <div className="appbg">
       <form className="login-container">
         <h2>Login</h2>
+        {/* EMAIL FIELD */}
         <div className="form-group">
           <input
             type="email"
@@ -64,6 +66,8 @@ export default function Login() {
             placeholder="Enter Email"
           />
         </div>
+        {/* ... */}
+        {/* USERNAME FIELD */}
         <div className="form-group">
           <input
             placeholder="Enter Username"
@@ -71,6 +75,8 @@ export default function Login() {
             value={username}
           />
         </div>
+        {/* ... */}
+        {/* PASSWORD FIELD */}
         <div className="form-group">
           <div className="login-container-bg"></div>
           <input
@@ -79,15 +85,18 @@ export default function Login() {
             value={password}
           />
         </div>
+        {/* ... */}
+        {/* MAIN LOGIN BUTTON */}
         <button type="submit" onClick={onLogin} className="login-button">
           Login
         </button>
-
+        {/* ... */}
+        {/* GOOGLE AND FACEBOOK BUTTON */}
         <div className="form-group">
           <button className="fa fa-google" onClick={handleClick}></button>
           <button className="fa fa-facebook" onClick={handleClickFb}></button>
         </div>
-
+        {/* ... */}
         <div className="form-group">
           Dont have an account?
           <a href="/signup">Signup</a>

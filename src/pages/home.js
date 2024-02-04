@@ -3,14 +3,21 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import "./home.css";
+//when page open for the first time--->only login button everything else hidden
+//user logs in
+//login button gone
+//profile pic shown
+//change dp button available
+//when change dp clicked
+//dp changed
+
 export default function Home() {
   const [loginStatus, setloginStatus] = useState("Login");
-  const user = auth.currentUser;
-  console.log(user);
-  const logIn = (e) => {
+
+  const logIn = () => {
     navigate("/login");
   };
-  const logOut = (e) => {
+  const logOut = () => {
     signOut(auth);
   };
   useEffect(() => {
@@ -29,14 +36,18 @@ export default function Home() {
       }
     });
   }, []);
+
   const navigate = useNavigate();
+
   return (
-    <div className="container">
-      <button
-        onClick={loginStatus === "logout" ? () => logOut() : () => logIn()}
-      >
-        {loginStatus}
-      </button>
-    </div>
+    <>
+      <div className="container">
+        <button
+          onClick={loginStatus === "logout" ? () => logOut() : () => logIn()}
+        >
+          {loginStatus}
+        </button>
+      </div>
+    </>
   );
 }

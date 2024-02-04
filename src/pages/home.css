@@ -12,3 +12,15 @@
   display: flex;
   font-family: Arial, sans-serif;
 }
+.home_dp {
+  border-style: groove;
+  border-radius: 100%;
+  background-color: rgb(0, 0, 0);
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  height: 500px;
+  width: 500px;
+}

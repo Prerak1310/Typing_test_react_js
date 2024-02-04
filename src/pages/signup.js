@@ -13,6 +13,7 @@ export default function Signup() {
   const [confpassword, setConfPassword] = useState("");
   const wrongpassword = "Passwords do not match!!!";
   const navigate = useNavigate();
+  //FUNCTION FOR MAIN SIGNUP BUTTON
   const onSubmit = (e) => {
     e.preventDefault();
     if (password === confpassword) {
@@ -21,6 +22,7 @@ export default function Signup() {
           // Signed up
           const user = userCredential.user;
           console.log(user);
+
           navigate("/login");
           // ...
         })
@@ -33,10 +35,12 @@ export default function Signup() {
       setError(wrongpassword);
     }
   };
+  //...
 
   return (
     <div className="appbg_signup">
       <form className="signup-container">
+        {/* EMAIL FIELD */}
         <div className="form_group_signup">
           <input
             type="email"
@@ -46,6 +50,8 @@ export default function Signup() {
             placeholder="Enter Email"
           />
         </div>
+        {/* ... */}
+        {/* USERNAME FIELD */}
         <div className="form_group_signup">
           <input
             placeholder="Enter Username"
@@ -53,6 +59,8 @@ export default function Signup() {
             value={username}
           />
         </div>
+        {/* ... */}
+        {/* PASSWORD FIELD */}
         <div className="form_group_signup">
           <input
             placeholder="Enter Password"
@@ -60,6 +68,8 @@ export default function Signup() {
             value={password}
           />
         </div>
+        {/* ... */}
+        {/* CONFIRM PASSWORD FIELD */}
         <div className="form_group_signup">
           <input
             placeholder="Confirm Password"
@@ -67,6 +77,8 @@ export default function Signup() {
             value={confpassword}
           />
         </div>
+        {/* ... */}
+        {/* MAIN SIGNUP BUTTON */}
         <div className="form_group_signup">
           <button type="submit" onClick={onSubmit} className="signup_button">
             SIGNUP
@@ -79,6 +91,7 @@ export default function Signup() {
             <div></div>
           )}
         </div>
+        {/* ... */}
       </form>
     </div>
   );
